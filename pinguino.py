@@ -1,20 +1,5 @@
 from abc import ABC, abstractmethod
-from animal import Animal
-
-class Comer(ABC):
-    @abstractmethod
-    def comer_alimento(self):
-        pass
-
-class Nadar(ABC):
-    @abstractmethod
-    def nadar(self):
-        pass
-
-class Caminar(ABC):
-    @abstractmethod
-    def caminar(self):
-        pass
+from animal import Comer, Animal, Caminar, Nadar
 
 class Pinguino(Animal, Nadar, Caminar):
     def __init__(self, esta_nadando=False, velocidad_caminata=2, velocidad_nado=10):

@@ -1,16 +1,23 @@
 from abc import ABC, abstractmethod
-from animal import Animal
 from tigre import Tigre
 from delfin import Delfin
 from pinguino import Pinguino
+from buho import Buho
+from araña import Araña
+from mono import Mono
 
+#Este menú nos ayuda a que el usuario seleccione un animal
 def menu_seleccion_animal():
     print("Seleccione un animal:")
     print("1. Tigre")
     print("2. Delfín")
     print("3. Pingüino")
+    print("4. Búho")
+    print("5. Araña")
+    print("6. Mono")
     return int(input("Ingrese su opción: "))
 
+#Este menú nos va a ayudar a que el usuario seleccione alguna acción a realizar
 def menu_detalles_animal(animal):
     print("Opciones:")
     print("1. Ingresar detalles")
@@ -19,26 +26,42 @@ def menu_detalles_animal(animal):
     print("4. Comer")
     return int(input("Ingrese su opción: "))
 
+#Esta es la parte principal del código
 def main():
+    #Esta variable booleana nos servirá para controlar el bucle del menú de elección de animales
     continuar_bucle_externo = True
 
+    #Definimos los objetos de los animales con su configuración por defecto
     objeto_tigre = Tigre()
     objeto_delfin = Delfin()
     objeto_pinguino = Pinguino()
+    objeto_buho = Buho()
+    objeto_araña = Araña()
+    objeto_mono = Mono()
 
+    #Este es un bucle para el menú de elección de animales
     while continuar_bucle_externo:
         opcion = menu_seleccion_animal()
-        if opcion == 1:
-            animal = objeto_tigre
-        elif opcion == 2:
-            animal = objeto_delfin
-        elif opcion == 3:
-            animal = objeto_pinguino
-        else:
-            print("Opción inválida.")
-            continue
+        match opcion:
+            case 1:
+                animal = objeto_tigre
+            case 2:
+                animal = objeto_delfin
+            case 3:
+                animal = objeto_pinguino
+            case 4:
+                animal = objeto_buho
+            case 5:
+                animal = objeto_araña
+            case 6:
+                animal = objeto_mono
+            case _:
+                print("Opción inválida.")
+                continue
 
+        #Variable booleana para controlar el bucle de elección de acción
         continuar_bucle_interno = True
+        #Bucle para el menú de elección de acción
         while continuar_bucle_interno:
             print(f"El animal seleccionado es: {animal.get_nombre()}")
             opcion_menu = menu_detalles_animal(animal)
