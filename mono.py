@@ -34,5 +34,5 @@ class mono(Animal, Caminar, Comer,Trepar):
         print(f"El mono: esta caminando")
         
     def trepar(self):
-        print(f"EL mono esta trepando ")    
+        print(f"EL mono esta trepando un arbol ")    
         
